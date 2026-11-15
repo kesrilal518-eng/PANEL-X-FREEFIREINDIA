@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/ic_launcher_background"/>
-    <foreground android:drawable="@drawable/ic_launcher_foreground"/>
-</adaptive-icon>
+<!-- Fallback for API < 26: simple vector, not adaptive-icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="#0A0A0F"
+        android:pathData="M0,0h48v48h-48z"/>
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M12,12h24v24h-24z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,16h16v4h-16zM16,22h12v4h-12zM16,28h14v4h-14z"/>
+</vector>
