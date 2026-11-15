@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ##############################################################################
-# Gradle start up script for POSIX generated for this project
+# Gradle start up script for POSIX (fixed for CI)
 ##############################################################################
 
 # Attempt to set APP_HOME
@@ -18,7 +18,9 @@ APP_HOME=$(cd "$(dirname "$app_path")" && pwd -P) || exit
 
 APP_NAME="Gradle"
 APP_BASE_NAME=${0##*/}
-DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Fixed: do not embed extra quotes inside the value
+DEFAULT_JVM_OPTS="-Xmx64m -Xms64m"
 
 MAX_FD=maximum
 
@@ -52,14 +54,8 @@ else
   which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH."
 fi
 
-if [ "$cygwin" = false -a "$darwin" = false -a "$nonstop" = false ] ; then
-  MAX_FD_LIMIT=$(ulimit -H -n)
-  if [ $? -eq 0 ] ; then
-    if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
-      MAX_FD="$MAX_FD_LIMIT"
-    fi
-    ulimit -n $MAX_FD
-  fi
+if [ ! -f "$CLASSPATH" ]; then
+  die "ERROR: Gradle wrapper jar not found at $CLASSPATH\nRun: gradle wrapper --gradle-version 8.2"
 fi
 
 exec "$JAVACMD" $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS \
